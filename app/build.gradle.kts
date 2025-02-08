@@ -42,6 +42,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 	implementation("gg.jte:jte:3.1.12")
 	implementation("gg.jte:jte-spring-boot-starter-3:3.1.12")
 	//compileOnly("org.projectlombok:lombok")
@@ -56,6 +57,11 @@ dependencies {
 
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("org.jacoco:org.jacoco.core:0.8.11")
+
+	implementation("org.openapitools:jackson-databind-nullable:0.2.6")
+
+	implementation("org.mapstruct:mapstruct:1.6.0.Beta1")
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.0.Beta1")
 
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
