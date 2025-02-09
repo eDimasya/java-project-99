@@ -21,6 +21,8 @@ public abstract class JsonNullableMapper {
     /**
      * Checks whether nullable parameter was passed explicitly.
      *
+     * @param <T> typed param
+     * @param nullable nullable param
      * @return true if value was set explicitly, false otherwise
      */
     @Condition

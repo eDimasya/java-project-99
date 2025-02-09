@@ -20,6 +20,7 @@ import com.nimbusds.jose.proc.SecurityContext;
 
 @Configuration
 public class EncodersConfig {
+
     @Autowired
     private RsaKeyProperties rsaKeys;
 
@@ -30,7 +31,10 @@ public class EncodersConfig {
 
     @Bean
     public JwtEncoder jwtEncoder() {
-        JWK jwk = new RSAKey.Builder(rsaKeys.getPublicKey()).privateKey(rsaKeys.getPrivateKey()).build();
+        JWK jwk = new RSAKey.Builder(
+                rsaKeys.getPublicKey())
+                .privateKey(rsaKeys.getPrivateKey())
+                .build();
         JWKSource<SecurityContext> jwks = new ImmutableJWKSet<>(new JWKSet(jwk));
         return new NimbusJwtEncoder(jwks);
     }
