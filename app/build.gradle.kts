@@ -63,6 +63,10 @@ dependencies {
 	implementation("org.mapstruct:mapstruct:1.6.0.Beta1")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.6.0.Beta1")
 
+	implementation("net.datafaker:datafaker:2.0.2")
+
+	implementation("org.instancio:instancio-junit:3.6.0")
+
     compileOnly("org.projectlombok:lombok:1.18.30")
     annotationProcessor("org.projectlombok:lombok:1.18.30")
     testCompileOnly("org.projectlombok:lombok:1.18.30")

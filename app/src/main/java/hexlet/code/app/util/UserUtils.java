@@ -10,6 +10,7 @@ import hexlet.code.app.repository.UserRepository;
 @Component
 @AllArgsConstructor
 public class UserUtils {
+
     @Autowired
     private UserRepository userRepository;
 
