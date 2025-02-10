@@ -1,5 +1,5 @@
 rsa:
-  private-key: ${private-key}
+  private-key: file:/etc/secrets/private-key.pem
 
 spring:
   datasource:
