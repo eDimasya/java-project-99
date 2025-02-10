@@ -26,7 +26,7 @@ public class DataInitializer implements ApplicationRunner {
         userData.setEmail(email);
         userData.setPasswordDigest("qwerty");
         userService.createUser(userData);
-        User user = userRepository.finByEmail(email).get();
+        User user = userRepository.findByEmail(email).get();
 
     }
 }
