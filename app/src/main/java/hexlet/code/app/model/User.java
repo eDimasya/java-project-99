@@ -35,10 +35,12 @@ public class User implements UserDetails, BaseEntity {
     @EqualsAndHashCode.Include
     private long id;
 
-    @NotBlank
+    //@NotBlank
+    @Column
     private String firstName;
 
-    @NotBlank
+    //@NotBlank
+    @Column
     private String lastName;
 
     @Email

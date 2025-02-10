@@ -206,6 +206,9 @@
         <module name="SuppressionCommentFilter">
             <property name="checkFormat" value="MethodLength"/>
         </module>
+        <!--<module name="SuppressionFilter">
+            <property name="file" value="checkstyle-suppressions.xml"/>
+        </module>-->
     </module>
     <module name="SuppressWarningsFilter"/>
 </module>

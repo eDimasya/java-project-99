@@ -24,6 +24,8 @@ public class DataInitializer implements ApplicationRunner {
         String email = "hexlet@example.com";
         User userData = new User();
         userData.setEmail(email);
+        userData.setFirstName("firstName");
+        userData.setLastName("lastName");
         userData.setPasswordDigest("qwerty");
         userService.createUser(userData);
         User user = userRepository.findByEmail(email).get();
