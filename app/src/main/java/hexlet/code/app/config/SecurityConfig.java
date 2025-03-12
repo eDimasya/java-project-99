@@ -23,6 +23,7 @@ import hexlet.code.app.service.CustomUserDetailsService;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
+    public static final int MIN_PASSWORD_LENGTH = 5;
     @Autowired
     private JwtDecoder jwtDecoder;
 

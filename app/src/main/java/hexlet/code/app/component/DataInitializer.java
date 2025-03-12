@@ -1,6 +1,6 @@
 package hexlet.code.app.component;
 
-//import hexlet.code.app.model.User;
+import hexlet.code.app.model.User;
 import hexlet.code.app.repository.UserRepository;
 import hexlet.code.app.service.CustomUserDetailsService;
 import lombok.AllArgsConstructor;
@@ -20,15 +20,13 @@ public class DataInitializer implements ApplicationRunner {
     private CustomUserDetailsService userService;
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
-        /*String email = "hexlet@example.com";
+    public void run(ApplicationArguments args) {
+        String email = "admin@admin.com";
         User userData = new User();
         userData.setEmail(email);
-        userData.setFirstName("firstName");
-        userData.setLastName("lastName");
-        userData.setPasswordDigest("qwerty");
+        userData.setFirstName("adminFN");
+        userData.setLastName("adminLN");
+        userData.setPasswordDigest("admin");
         userService.createUser(userData);
-        User user = userRepository.findByEmail(email).get();*/
-
     }
 }

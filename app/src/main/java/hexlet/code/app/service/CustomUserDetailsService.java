@@ -1,5 +1,6 @@
 package hexlet.code.app.service;
 
+import hexlet.code.app.mapper.UserMapper;
 import hexlet.code.app.model.User;
 import hexlet.code.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class CustomUserDetailsService implements UserDetailsManager {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public void createUser(UserDetails userData) {
