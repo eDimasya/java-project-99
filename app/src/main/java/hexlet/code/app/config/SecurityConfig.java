@@ -41,7 +41,6 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        //.requestMatchers("/api/login").permitAll()
                         .requestMatchers("/api/login").permitAll()
                         .requestMatchers("/welcome").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
@@ -60,9 +59,6 @@ public class SecurityConfig {
                 .oauth2ResourceServer(rs ->
                         rs.jwt(jwt ->
                                 jwt.decoder(jwtDecoder)))
-                /*.oauth2ResourceServer(oauth2 ->
-                        oauth2.jwt(jwt -> {
-                        }))*/
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }

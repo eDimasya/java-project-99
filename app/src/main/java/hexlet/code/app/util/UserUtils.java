@@ -2,6 +2,7 @@ package hexlet.code.app.util;
 
 import hexlet.code.app.dto.user.UserCreateDTO;
 import hexlet.code.app.dto.user.UserDTO;
+import hexlet.code.app.exception.UserAlreadyAddedException;
 import hexlet.code.app.model.User;
 import hexlet.code.app.service.UserService;
 import lombok.AllArgsConstructor;
@@ -29,13 +30,16 @@ public class UserUtils {
         return userRepository.findByEmail(email).get();
     }
 
-
     public UserDTO addUser(String email, String firstName, String lastName, String password) {
-        UserCreateDTO user = new UserCreateDTO();
-        user.setEmail(email);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setPassword(password);
-        return userService.create(user);
+        if (userRepository.findByEmail(email).isEmpty()) {
+            UserCreateDTO user = new UserCreateDTO();
+            user.setEmail(email);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setPassword(password);
+            return userService.create(user);
+        } else {
+            throw new UserAlreadyAddedException(email);
+        }
     }
 }
