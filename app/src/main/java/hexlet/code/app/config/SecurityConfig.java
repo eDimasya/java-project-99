@@ -42,27 +42,27 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         //.requestMatchers("/api/login").permitAll()
-                        .requestMatchers("/login").permitAll()
+                        .requestMatchers("/api/login").permitAll()
                         .requestMatchers("/welcome").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/users").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/users").authenticated()
-                        .requestMatchers(HttpMethod.PUT, "/users/**").authenticated()
-                        /*.requestMatchers("/users").access(
-                                (authentication, object) -> {
-                                    object.getRequest().
-                                })*/
+                        .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/users").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/users/**").authenticated()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/favicon.ico").permitAll()
+                        .requestMatchers("/index.html").permitAll()
+                        .requestMatchers("/assets/**").permitAll()
                         .anyRequest().authenticated())
                 .headers(headers ->
                         headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                /*.oauth2ResourceServer(rs ->
+                .oauth2ResourceServer(rs ->
                         rs.jwt(jwt ->
-                                jwt.decoder(jwtDecoder)))*/
-                .oauth2ResourceServer(oauth2 ->
+                                jwt.decoder(jwtDecoder)))
+                /*.oauth2ResourceServer(oauth2 ->
                         oauth2.jwt(jwt -> {
-                        }))
+                        }))*/
                 .httpBasic(Customizer.withDefaults())
                 .build();
     }

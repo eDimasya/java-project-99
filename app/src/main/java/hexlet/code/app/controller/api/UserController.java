@@ -5,7 +5,9 @@ import hexlet.code.app.dto.user.UserDTO;
 import hexlet.code.app.dto.user.UserUpdateDTO;
 import hexlet.code.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,9 +19,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
@@ -31,8 +34,13 @@ public class UserController {
     }
 
     @GetMapping
-    public List<UserDTO> index() {
-        return userService.index();
+    public ResponseEntity<List<UserDTO>> index() {
+        List<UserDTO> users = userService.index();
+        HttpHeaders headers = new HttpHeaders();
+        headers.addIfAbsent("X-Total-Count", String.valueOf(users.size()));
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(users);
     }
 
     @PostMapping
