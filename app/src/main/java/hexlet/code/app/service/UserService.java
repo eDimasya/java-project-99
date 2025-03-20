@@ -45,6 +45,7 @@ public class UserService {
         User user = userRepository.findById(id).orElseThrow(() ->
                 new UsernameNotFoundException("User with id " + id + " not found"));
         userMapper.update(userData, user);
+        userRepository.save(user);
         return userMapper.map(user);
     }
 

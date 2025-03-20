@@ -1,6 +1,9 @@
 package hexlet.code.app.util;
 
+import hexlet.code.app.dto.user.UserCreateDTO;
+import hexlet.code.app.dto.user.UserDTO;
 import hexlet.code.app.model.User;
+import hexlet.code.app.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,6 +17,9 @@ public class UserUtils {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private UserService userService;
+
     public User getCurrentUser() {
         var authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
@@ -21,5 +27,15 @@ public class UserUtils {
         }
         var email = authentication.getName();
         return userRepository.findByEmail(email).get();
+    }
+
+
+    public UserDTO addUser(String email, String firstName, String lastName, String password) {
+        UserCreateDTO user = new UserCreateDTO();
+        user.setEmail(email);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setPassword(password);
+        return userService.create(user);
     }
 }
