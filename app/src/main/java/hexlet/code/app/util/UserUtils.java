@@ -3,6 +3,7 @@ package hexlet.code.app.util;
 import hexlet.code.app.dto.user.UserCreateDTO;
 import hexlet.code.app.dto.user.UserDTO;
 import hexlet.code.app.exception.UserAlreadyAddedException;
+import hexlet.code.app.mapper.UserMapper;
 import hexlet.code.app.model.User;
 import hexlet.code.app.service.UserService;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,9 @@ import hexlet.code.app.repository.UserRepository;
 @Component
 @AllArgsConstructor
 public class UserUtils {
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Autowired
     private UserRepository userRepository;
@@ -39,7 +43,9 @@ public class UserUtils {
             user.setPassword(password);
             return userService.create(user);
         } else {
-            throw new UserAlreadyAddedException(email);
+            System.out.println("User with email: " + email + " already added");
+            return userMapper.map(
+                    userRepository.findByEmail(email).get());
         }
     }
 }
