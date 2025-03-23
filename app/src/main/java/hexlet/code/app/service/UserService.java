@@ -15,43 +15,43 @@ import java.util.List;
 @Service
 public class UserService {
     @Autowired
-    private UserMapper userMapper;
+    private UserMapper mapper;
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository repository;
 
     public UserDTO show(Long id) {
-        return userMapper.map(
-                userRepository.findById(id)
+        return mapper.map(
+                repository.findById(id)
                         .orElseThrow(() ->
                                 new UsernameNotFoundException("User with id " + id + " not found")));
     }
 
-    public UserDTO create(UserCreateDTO userData) {
-        User user = userMapper.map(userData);
-        return userMapper.map(
-                userRepository.save(user));
+    public UserDTO create(UserCreateDTO data) {
+        User user = mapper.map(data);
+        return mapper.map(
+                repository.save(user));
     }
 
     public List<UserDTO> index() {
-        return userRepository
+        return repository
                 .findAll()
                 .stream()
-                .map(userMapper::map)
+                .map(mapper::map)
                 .toList();
     }
 
-    public UserDTO update(UserUpdateDTO userData, Long id) {
-        User user = userRepository.findById(id).orElseThrow(() ->
+    public UserDTO update(UserUpdateDTO data, Long id) {
+        User user = repository.findById(id).orElseThrow(() ->
                 new UsernameNotFoundException("User with id " + id + " not found"));
-        userMapper.update(userData, user);
-        userRepository.save(user);
-        return userMapper.map(user);
+        mapper.update(data, user);
+        repository.save(user);
+        return mapper.map(user);
     }
 
     public void delete(Long id) {
-        userRepository.delete(
-                userRepository.findById(id).orElseThrow(() ->
+        repository.delete(
+                repository.findById(id).orElseThrow(() ->
                         new UsernameNotFoundException("User with id " + id + " not found")));
     }
 }

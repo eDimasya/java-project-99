@@ -2,7 +2,6 @@ package hexlet.code.app.util;
 
 import hexlet.code.app.dto.user.UserCreateDTO;
 import hexlet.code.app.dto.user.UserDTO;
-import hexlet.code.app.exception.UserAlreadyAddedException;
 import hexlet.code.app.mapper.UserMapper;
 import hexlet.code.app.model.User;
 import hexlet.code.app.service.UserService;

@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AuthRequest {
+public class AuthRequestDTO {
     @Email
     private String username;
 

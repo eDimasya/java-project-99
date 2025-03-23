@@ -18,11 +18,11 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "tasks")
+@Table(name = "task_statuses")
 @ToString(includeFieldNames = true,
         onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Task implements BaseEntity {
+public class TaskStatus implements BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ToString.Include
